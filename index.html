@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+	<title>Document</title>
+</head>
+<body>
+		<span>ИНН:</span>
+		<input type="text" name="INN" id="inn">
+		<button id="innCheck">Отправить</button><br>
+		
+		<span>Наименование организации: </span>
+		<span id="nameOrg"></span><br>
+		
+		<span>Город: </span>
+		<span id="city"></span><br>
+		
+		<span>Полный адрес с индексом: </span>
+		<span id="fullAdress"></span><br>
+
+		<script type="text/javascript">
+			
+			$("#innCheck").on("click", function(e) {
+				var inn = $("#inn").val();
+				$.ajax({
+					url: "ajax.php",
+					method: 'POST',
+					data: {inn:inn},
+					success: function(data) {	
+						let obj = JSON.parse(data); 
+						//console.log(obj);
+						$("#nameOrg").text(obj.nameOrg);
+						$("#city").text(obj.city);
+						$("#fullAdress").text(obj.fullAdress);				   
+					},
+				});	
+			});	 	
+		</script>
+</body>
+</html>
