@@ -10,7 +10,7 @@ $options = array(
 	"query" => $inn,
 	"count" => 5
 );
-$token = '4995bc0f1b57ce4b40383a5bed8f078e4e0727ff';
+$token = 'your_key';
 
 $ch = curl_init();
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
